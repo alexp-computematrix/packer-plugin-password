@@ -26,7 +26,7 @@ Then, run [`packer init`](https://www.packer.io/docs/commands/init).
 packer {
   required_plugins {
     password = {
-      version = ">= 1.0.0"
+      version = ">= 0.1.0"
       source  = "github.com/alexp-computematrix/password"
     }
   }
@@ -91,12 +91,12 @@ It is **HIGHLY** recommended you generate passwords as apposed to provide your o
 
 The plugin will always produce four datasource outputs of the following type:
 
-|  Output   |          Value           |  Type   |
-|:---------:|:------------------------:|:-------:|
-|  base64   |  Raw URL encoded base64  | string  |
-|   crypt   | Crytped algorithm cipher | string  |
-|   hash    |     Hex encoded hash     | string  |
-| plaintext |        Plain text        | string  |
+|  Output   |         Value          |  Type   |
+|:---------:|:----------------------:|:-------:|
+|  base64   | Base64 raw URL encoded | string  |
+|   crypt   |      Cryptic hash      | string  |
+|   hash    |  Hex encoded checksum  | string  |
+| plaintext |       Plain text       | string  |
 
 Each output is a representation of the generated **(or provided)** password in a specific format, which can then be utilized as needed.
 
@@ -104,8 +104,8 @@ Each output is a representation of the generated **(or provided)** password in a
 // create new user and set password using the crypt value
 provisioner "shell" {
   inline = [
-    "/usr/sbin/useradd -c 'test user' -d /home/test -s /bin/bash -U test",
-    format("echo 'test:%s' | /usr/sbin/chpasswd -e", data.password.test.crypt),
+    "/usr/sbin/useradd -c 'webserver admin' -d /home/web-admin -s /bin/bash -U web-admin",
+    format("echo 'web-admin:%s' | /usr/sbin/chpasswd -e", data.password.webserver_admin.crypt),
   ]
 }
 ```
