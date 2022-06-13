@@ -102,7 +102,7 @@ Each output is a representation of the generated **(or provided)** password in a
 
 ```hcl
 // create new user and set password using the crypt value
-provisioner "shell-local" {
+provisioner "shell" {
   inline = [
     "/usr/sbin/useradd -c 'test user' -d /home/test -s /bin/bash -U test",
     format("echo 'test:%s' | /usr/sbin/chpasswd -e", data.password.test.crypt),
