@@ -44,10 +44,13 @@ build {
 
   provisioner "shell-local" {
     inline = [
-      "echo '${data.password.outputs.base64}'",
-      "echo '${data.password.outputs.crypt}'",
-      "echo '${data.password.outputs.hash}'",
-      "echo '${data.password.outputs.plaintext}'"
+      "test -n \"$(echo '${data.password.outputs.base64}')\" || false",
+      "test -n \"$(echo '${data.password.outputs.crypt}')\" || false",
+      "test -n \"$(echo '${data.password.outputs.hash}')\" || false",
+      "test -n \"$(echo '${data.password.outputs.plaintext}')\" || false",
+      "test ${length(data.password.outputs.crypt)} == ${var.crypt_test.length} || false",
+      "test ${length(data.password.outputs.hash)} == ${var.hash_test.length} || false",
+      "test ${length(data.password.outputs.plaintext)} == ${var.password_test.length} || false"
     ]
   }
 }
