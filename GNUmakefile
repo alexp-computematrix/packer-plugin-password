@@ -1,5 +1,6 @@
 NAME=password
 BINARY=packer-plugin-${NAME}
+VERSION?=$(shell git describe --tags --always --dirty)
 
 COUNT?=1
 TEST?=$(shell go list ./...)
@@ -9,7 +10,7 @@ HASHICORP_PACKER_PLUGIN_SDK_VERSION?=$(shell go list -m github.com/hashicorp/pac
 .PHONY: dev
 
 build:
-	@go build -o ${BINARY}
+	@go build -o ${BINARY} -ldflags "-X 'main.Version=${VERSION}'"
 
 dev: build
 	@mkdir -p ~/.packer.d/plugins/
