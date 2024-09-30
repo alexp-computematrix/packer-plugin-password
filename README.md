@@ -1,4 +1,4 @@
-[![release](https://github.com/alexp-computematrix/packer-plugin-password/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/alexp-computematrix/packer-plugin-password/actions/workflows/release.yml)
+[![release](https://github.com/alexp-computematrix/packer-plugin-password/actions/workflows/release.yml/badge.svg)](https://github.com/alexp-computematrix/packer-plugin-password/actions/workflows/release.yml)
 
 # Packer Plugin Password
 Generate cryptographically secure pseudo-random passwords as a Datasource for Hashicorp Packer.
