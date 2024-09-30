@@ -9,8 +9,8 @@ import (
 )
 
 var (
-	Version           = "0.1.0"
-	VersionPrerelease = ""
+	Version           string
+	VersionPrerelease string
 	PluginVersion     = version.InitializePluginVersion(Version, VersionPrerelease)
 )
 
