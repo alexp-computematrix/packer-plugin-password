@@ -44,3 +44,6 @@ jobs:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_VERSION: ${{ steps.plugin_describe.outputs.api_version }}
+      - name: Display version release
+        run: |
+          echo "Releasing version: ${{ steps.goreleaser.outputs.version }}"
