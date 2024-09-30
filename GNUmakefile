@@ -10,7 +10,7 @@ HASHICORP_PACKER_PLUGIN_SDK_VERSION?=$(shell go list -m github.com/hashicorp/pac
 .PHONY: dev
 
 build:
-	@go build -o ${BINARY} -ldflags "-X 'main.Version=${VERSION}'"
+	@go build -o ${BINARY}
 
 dev: build
 	@mkdir -p ~/.packer.d/plugins/

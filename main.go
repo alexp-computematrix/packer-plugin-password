@@ -9,9 +9,7 @@ import (
 )
 
 var (
-	Version           string
-	VersionPrerelease string
-	PluginVersion     = version.InitializePluginVersion(Version, VersionPrerelease)
+	PluginVersion = version.InitializePluginVersion(Version, VersionPrerelease)
 )
 
 func main() {
